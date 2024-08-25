@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./ProfilePage.css"
 import ProfileIcon from "../Assets/ProfileIcon.svg";
 import { useDeleteUser } from "../Hooks/useDeleteUser";
 import { useNavigate } from "react-router-dom";
+import { useGetUser } from "../Hooks/useGetUser";
 
 export const ProfilePage = () => {
     const [isEditable, setIsEditable] = useState(false);
     const [user, setUser] = useState({
-        userId: "1",
-        name: "Yash Chavare",
-        email: "yashchavare1@gmail.com",
-        dateOfBirth: "2000-12-15",
-
+        userId: "",
+        name: "",
+        email: "",
+        dateOfBirth: "",
     });
 
     const navigate = useNavigate();
+    const { userData, loading } = useGetUser(true);
+    const deleteUser = useDeleteUser();
+
+    useEffect(() => {
+        if (!loading && userData) {
+            const { userId, name, email, dateOfBirth } = userData;
+            const [year, month, day] = dateOfBirth.split("T")[0].split("-");
+            setUser({
+                userId,
+                name,
+                email,
+                dateOfBirth: `${year}-${month}-${day}`,
+            });
+        }
+    }, [loading, userData]);
 
     const handleInput = (event) => {
         const { name, value } = event.target;
@@ -25,7 +40,9 @@ export const ProfilePage = () => {
         }));
     }
 
-    const deleteUser = useDeleteUser();
+    if (loading) {
+        return <div className="loader">Loading...</div>;
+    }
 
     return (
         <>
@@ -87,11 +104,11 @@ export const ProfilePage = () => {
                     </div>}
                 </form>
 
-                <div className="manage-buttons"> 
+                <div className="manage-buttons">
                     {!isEditable && <>
-                        <button type="button" onClick={ () => setIsEditable(true) }>Edit Profile</button>
-                        <button type="button" onClick={ () => navigate("/change-password") }>Change Password</button>
-                        <button type="button" id="btn-delete" onClick={ () => deleteUser() } >Delete Profile</button>
+                        <button type="button" onClick={() => setIsEditable(true)}>Edit Profile</button>
+                        <button type="button" onClick={() => navigate("/change-password")}>Change Password</button>
+                        <button type="button" id="btn-delete" onClick={() => deleteUser()} >Delete Profile</button>
                     </>
                     }
                 </div>
