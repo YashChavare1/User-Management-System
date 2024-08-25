@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ChangePassword.css";
 import ProfileIcon from "../Assets/ProfileIcon.svg";
+import { useUpdateUser } from "../Hooks/useUpdateUser";
 
 export const ChangePassword = () => {
     const [data, setData] = useState({});
@@ -16,9 +17,11 @@ export const ChangePassword = () => {
         }))
     }
 
+    const { loading, updateUser } = useUpdateUser("/user/change-password", data);
+
     return (
         <div className="change-password-form">
-            <form action="">
+            <form onSubmit={updateUser}>
                 <div className="profile-icon">
                     <img src={ProfileIcon} alt="profile icon" />
                     <h1>Change Password</h1>
@@ -57,7 +60,7 @@ export const ChangePassword = () => {
                     type="submit"
                     className="btn-submit"
                 >
-                    Change Password
+                    { loading ? "loading..." : "Change Password"}
                 </button>
 
                 <button
