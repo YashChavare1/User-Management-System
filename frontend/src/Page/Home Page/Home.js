@@ -1,5 +1,5 @@
-import { SignupForm } from "../Components/Signup Form/SignupForm";
-import { UserList } from "../Components/UserList/UserList";
+import { SignupForm } from "../../Components/Signup Form/SignupForm";
+import { UserList } from "../../Components/UserList/UserList";
 import "./Home.css";
 
 export const Home = () => {

@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import "./ProfilePage.css"
-import ProfileIcon from "../Assets/ProfileIcon.svg";
-import { useDeleteUser } from "../Hooks/useDeleteUser";
+import ProfileIcon from "../../Assets/ProfileIcon.svg";
+import { useDeleteUser } from "../../Hooks/useDeleteUser";
 import { useNavigate } from "react-router-dom";
-import { useGetUser } from "../Hooks/useGetUser";
+import { useGetUser } from "../../Hooks/useGetUser";
+import { useUpdateUser } from "../../Hooks/useUpdateUser";
+import { validateProfileUpdate } from "../../Utils/validateProfileUpdate";
 
 export const ProfilePage = () => {
     const [isEditable, setIsEditable] = useState(false);
+    const [errors, setErrors] = useState({});
     const [user, setUser] = useState({
         userId: "",
         name: "",
@@ -16,6 +19,7 @@ export const ProfilePage = () => {
 
     const navigate = useNavigate();
     const { userData, loading } = useGetUser(true);
+    const { updateUser } = useUpdateUser("/user/update", user);
     const deleteUser = useDeleteUser();
 
     useEffect(() => {
@@ -40,6 +44,18 @@ export const ProfilePage = () => {
         }));
     }
 
+    const handleUpdateUser = (event) => {
+        event.preventDefault();
+
+        const validate = validateProfileUpdate(user, setErrors);
+        
+        if(!validate) {
+            return;
+        }
+
+        updateUser();
+    }
+
     if (loading) {
         return <div className="loader">Loading...</div>;
     }
@@ -47,14 +63,14 @@ export const ProfilePage = () => {
     return (
         <>
             <div className="profile-page-form">
-                <form action="">
+                <form onSubmit={handleUpdateUser}>
                     <div className="profile-icon">
                         <img src={ProfileIcon} alt="profile icon" />
                         <h1>Profile</h1>
                     </div>
                     <p>User ID: <span> {user.userId} </span></p>
                     <div className="form-group">
-                        <label htmlFor="name">Name</label>
+                        <label htmlFor="name" className={errors.name ? "error-label" : ""}>Name</label>
                         <input
                             type="text"
                             name="name"
@@ -66,9 +82,9 @@ export const ProfilePage = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="email">Email ID</label>
+                        <label htmlFor="email" className={errors.email ? "error-label" : ""}>Email ID</label>
                         <input
-                            type="email"
+                            type="text"
                             name="email"
                             disabled={!isEditable}
                             onChange={handleInput}
@@ -78,7 +94,7 @@ export const ProfilePage = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="dob">Date of Birth</label>
+                        <label htmlFor="dob" className={errors.dateOfBirth ? "error-label" : ""}>Date of Birth</label>
                         <input
                             type="date"
                             name="dateOfBirth"

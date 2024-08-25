@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export const useAddUser = (data, setLoading) => {
-    const addUser = async (event) => {
-        event.preventDefault();
+    const addUser = async () => {
         setLoading(true);
 
         const { confirmPassword, ...formData } = data;

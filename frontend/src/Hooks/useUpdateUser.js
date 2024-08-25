@@ -3,10 +3,8 @@ import axios from "axios";
 
 export const useUpdateUser = (url, data) => {
     const [loading, setLoading] = useState(false);
-    console.log(url, data);
 
-    const updateUser = (event) => {
-        event.preventDefault();
+    const updateUser = () => {
         setLoading(true);
         const userToken = localStorage.getItem("token");
 

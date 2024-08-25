@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./ChangePassword.css";
-import ProfileIcon from "../Assets/ProfileIcon.svg";
-import { useUpdateUser } from "../Hooks/useUpdateUser";
+import ProfileIcon from "../../Assets/ProfileIcon.svg";
+import { useUpdateUser } from "../../Hooks/useUpdateUser";
+import { validateChangePassword } from "../../Utils/validateChangePassword";
 
 export const ChangePassword = () => {
     const [data, setData] = useState({});
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     const handleInput = (event) => {
@@ -19,15 +21,27 @@ export const ChangePassword = () => {
 
     const { loading, updateUser } = useUpdateUser("/user/change-password", data);
 
+    const handleChangePassword = (event) => {
+        event.preventDefault();
+
+        const validate = validateChangePassword(data, setErrors);
+
+        if(!validate) {
+            return;
+        }
+
+        updateUser();
+    } 
+
     return (
         <div className="change-password-form">
-            <form onSubmit={updateUser}>
+            <form onSubmit={handleChangePassword}>
                 <div className="profile-icon">
                     <img src={ProfileIcon} alt="profile icon" />
                     <h1>Change Password</h1>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="name">Old Password</label>
+                    <label htmlFor="oldPassword" className={errors.oldPassword ? "error-label" : ""}>Old Password</label>
                     <input
                         type="password"
                         name="oldPassword"
@@ -37,7 +51,7 @@ export const ChangePassword = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="newPassword">New Password</label>
+                    <label htmlFor="newPassword" className={errors.newPassword ? "error-label" : ""}>New Password</label>
                     <input
                         type="password"
                         name="newPassword"
@@ -47,10 +61,10 @@ export const ChangePassword = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="newPassword">Confirm New Password</label>
+                    <label htmlFor="confirmPassword" className={errors.confirmPassword ? "error-label" : ""}>Confirm New Password</label>
                     <input
                         type="password"
-                        name="confirmNewPassword"
+                        name="confirmPassword"
                         onChange={handleInput}
                         placeholder="Confirm New Password"
                     />
