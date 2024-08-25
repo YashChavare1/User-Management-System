@@ -1,0 +1,28 @@
+.card {
+    width: 23vw;
+    height: 30vh;
+    padding: 0px 10px;
+    border-radius: 15px;
+    box-sizing: border-box;
+    margin: 10px 0px 10px 0px;
+    background-color: hwb(204 88% 1%);
+
+}
+
+.card .info {
+    display: flex;
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+}
+
+.card .info label {
+    width: 35%;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+@media (max-width: 450px) {
+    .card {
+        width: 90vw;
+    } 
+}

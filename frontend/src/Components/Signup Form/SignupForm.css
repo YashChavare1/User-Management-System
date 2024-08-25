@@ -1,0 +1,98 @@
+.signup-form {
+    width: 26%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e1e1e1;
+    border-radius: 15px;
+    margin: 30px auto;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.signup-form h1 {
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.signup-form .input-fields {
+    width: 100%;
+}
+
+.signup-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+    width: 100%;
+}
+
+.signup-form .form-group input {
+    font-size: 16px;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid gray;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.signup-form .form-group input:focus {
+    border: 2px solid #334ba9;
+}
+
+.signup-form .form-group label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.signup-form .btn-submit {
+    width: 100%;
+    font-size: 18px;
+    padding: 12px;
+    color: white;
+    background-color: #334ba9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s linear;
+    margin-top: 15px;
+}
+
+.signup-form .btn-submit:hover {
+    background-color: #274ad6;
+    font-weight: 700;
+}
+
+.signup-form .signin-option {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.signup-form .signin-option p {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.signup-form .btn-signin {
+    font-size: 16px;
+    padding: 8px 20px;
+    color: #334ba9;
+    background-color: white;
+    border: 2px solid #334ba9;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s linear;
+}
+
+.signup-form .btn-signin:hover {
+    background-color: #334ba9;
+    color: white;
+}
+
+@media (max-width: 450px) {
+    .signup-form {
+        width: 90%;
+    }
+    
+}

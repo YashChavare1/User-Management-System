@@ -1,0 +1,36 @@
+.card-list .cards {
+    margin: 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.card-list h1 {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.no-data-found {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    background-color: hwb(204 33% 0%);
+    font-size: 22px;
+    font-weight: 600;
+    color: white;
+}
+
+.loader {
+    text-align: center;
+    font-weight: 800;
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+@media (max-width: 450px) {
+    .card-list .cards {
+        display: flex;
+        flex-direction: column;
+    }
+}
