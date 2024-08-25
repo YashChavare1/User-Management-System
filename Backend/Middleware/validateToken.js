@@ -34,7 +34,12 @@ const validateToken = async (req, res, next) => {
         next();
     }
     catch (error) {
-        console.error("Error occurred while token validatin: ", error.message);
+        console.error("Error occurred while token validation: ", error.message);
+        return res.status(500).json({
+            success: false,
+            message: "Internal Server Error",
+            error: error.message,
+        });
     }
 }
 
