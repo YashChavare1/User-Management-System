@@ -20,23 +20,24 @@ export const useUpdateUser = (url, data) => {
                 Authorization: `Bearer ${userToken}`,
             },
         })
-        .then((res) => {
-            if (url === "/user/change-password") {
-                alert("Password Updated");
-                window.location.href = "/profile";
-            }
+            .then((res) => {
+                if (url === "/user/change-password") {
+                    alert("Password Updated");
+                    window.location.href = "/profile";
+                }
 
-            if (url === "/user/update") {
-                alert("User Details Updated");
-                window.location.reload();
-            }
-            setLoading(false);
-        })
-        .catch((error) => {
-            console.error(error);
-            alert("Updation Failed");
-            setLoading(false);
-        });
+                if (url === "/user/update") {
+                    alert("User Details Updated");
+                    window.location.reload();
+                }
+                setLoading(false);
+            })
+            .catch((error) => {
+                console.error(error);
+                const errorMessage = error.response?.data?.message || "Some issue occurred";
+                alert(errorMessage);
+                setLoading(false);
+            });
     };
 
     return { updateUser, loading };
