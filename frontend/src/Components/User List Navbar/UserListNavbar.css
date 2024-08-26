@@ -1,0 +1,100 @@
+.user-list-navbar {
+  background-color: #334ba9;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  justify-content: space-evenly;
+  margin-top: 10px;
+}
+
+.user-list-navbar .sort-userId,
+.user-list-navbar .sort-dob {
+  display: flex;
+  width: 300px;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.user-list-navbar .sort-userId select,
+.user-list-navbar .sort-dob select {
+  width: 130px;
+  height: 40px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 4px;
+  outline: none;
+}
+
+.user-list-navbar .sort-userId select option,
+.user-list-navbar .sort-dob select option {
+  font-size: 16px;
+}
+
+.filter-button button {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: #4778e4;
+}
+
+.filter-button {
+  display: flex;
+  justify-content: center;
+}
+
+.filter-button button:hover {
+  background-color: #165bee;
+}
+
+.sort-options {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .user-list-navbar {
+    flex-direction: column;
+  }
+
+  .user-list-navbar .sort-userId,
+  .user-list-navbar .sort-dob {
+    width: 100%;
+    justify-content: space-evenly;
+    margin-bottom: 10px;
+  }
+
+  .sort-options {
+    flex-direction: column;
+  }
+
+  .sort-options h3 {
+    width: 150px;
+  }
+
+  .user-list-navbar {
+    background-color: transparent;
+  }
+
+  .user-list-navbar .sort-userId,
+  .user-list-navbar .sort-dob {
+    margin-bottom: 5px;
+    background-color: #334ba9;
+  }
+
+  .user-list-navbar .sort-userId select,
+  .user-list-navbar .sort-dob select {
+    background-color: transparent; 
+    color: white;
+    border: 2px solid white;
+  }
+
+  .user-list-navbar .sort-userId select option,
+  .user-list-navbar .sort-dob select option {
+    color: black;
+  }
+}
