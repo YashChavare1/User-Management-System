@@ -51,7 +51,7 @@ const signInController = async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        if(!email || !password) {
+        if (!email || !password) {
             return res.status(400).json({
                 success: false,
                 message: "Email and password are required",
@@ -130,16 +130,16 @@ const getAllUsersController = async (req, res) => {
     }
 }
 
-const getUserByTokenController = async(req, res) => {
+const getUserByTokenController = async (req, res) => {
     try {
-        const {userId} = req.user;
+        const { userId } = req.user;
 
         const user = await userModel.findOne({
             where: { userId: userId },
             attributes: { exclude: ["password"] }
         });
 
-        if(!user) {
+        if (!user) {
             return res.status(404).json({
                 success: false,
                 message: "No user found",
@@ -152,7 +152,7 @@ const getUserByTokenController = async(req, res) => {
             userData: user,
         });
     }
-    catch(error) {
+    catch (error) {
         console.error("Error occured while fetching user details: ", error.message);
         return res.status(500).json({
             success: false,
@@ -177,6 +177,17 @@ const updateUserController = async (req, res) => {
                 success: false,
                 message: "User not found.",
             });
+        }
+
+        if (email) {
+            const existingEmailUser = await userModel.findOne({ where: { email } });
+            
+            if (existingEmailUser && existingEmailUser.userId !== userId) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Email already exists. Please use a different email.",
+                });
+            }
         }
 
         const updates = {};
