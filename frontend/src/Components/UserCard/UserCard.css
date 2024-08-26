@@ -1,18 +1,20 @@
 .card {
     width: 23vw;
-    height: 30vh;
+    height: 230px;
     padding: 0px 10px;
     border-radius: 15px;
     box-sizing: border-box;
     margin: 10px 0px 10px 0px;
     background-color: hwb(204 88% 1%);
-
 }
 
 .card .info {
     display: flex;
     width: 100%;
     padding: 10px 0px 10px 0px;
+    justify-content: space-between;
+    height: 55px;
+    align-items: center;
 }
 
 .card .info label {
@@ -21,7 +23,12 @@
     font-weight: 700;
 }
 
-@media (max-width: 450px) {
+.card .info span {
+    width: 63%;
+    box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
     .card {
         width: 90vw;
     } 

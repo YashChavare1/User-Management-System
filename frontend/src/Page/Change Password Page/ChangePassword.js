@@ -26,12 +26,12 @@ export const ChangePassword = () => {
 
         const validate = validateChangePassword(data, setErrors);
 
-        if(!validate) {
+        if (!validate) {
             return;
         }
 
         updateUser();
-    } 
+    }
 
     return (
         <div className="change-password-form">
@@ -41,7 +41,7 @@ export const ChangePassword = () => {
                     <h1>Change Password</h1>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="oldPassword" className={errors.oldPassword ? "error-label" : ""}>Old Password</label>
+                    <label className={errors.oldPassword ? "error-label" : ""}>Old Password</label>
                     <input
                         type="password"
                         name="oldPassword"
@@ -51,7 +51,7 @@ export const ChangePassword = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="newPassword" className={errors.newPassword ? "error-label" : ""}>New Password</label>
+                    <label className={errors.newPassword ? "error-label" : ""}>New Password</label>
                     <input
                         type="password"
                         name="newPassword"
@@ -61,7 +61,7 @@ export const ChangePassword = () => {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="confirmPassword" className={errors.confirmPassword ? "error-label" : ""}>Confirm New Password</label>
+                    <label className={errors.confirmPassword ? "error-label" : ""}>Confirm New Password</label>
                     <input
                         type="password"
                         name="confirmPassword"
@@ -74,7 +74,7 @@ export const ChangePassword = () => {
                     type="submit"
                     className="btn-submit"
                 >
-                    { loading ? "loading..." : "Change Password"}
+                    {loading ? "loading..." : "Change Password"}
                 </button>
 
                 <button

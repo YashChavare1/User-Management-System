@@ -111,7 +111,7 @@
     background-color: #d62727;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 768px) {
     .profile-page-form form {
         width: 90%;
     }

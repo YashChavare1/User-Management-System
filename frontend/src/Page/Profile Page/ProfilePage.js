@@ -48,8 +48,8 @@ export const ProfilePage = () => {
         event.preventDefault();
 
         const validate = validateProfileUpdate(user, setErrors);
-        
-        if(!validate) {
+
+        if (!validate) {
             return;
         }
 
@@ -70,7 +70,7 @@ export const ProfilePage = () => {
                     </div>
                     <p>User ID: <span> {user.userId} </span></p>
                     <div className="form-group">
-                        <label htmlFor="name" className={errors.name ? "error-label" : ""}>Name</label>
+                        <label className={errors.name ? "error-label" : ""}>Name</label>
                         <input
                             type="text"
                             name="name"
@@ -82,7 +82,7 @@ export const ProfilePage = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="email" className={errors.email ? "error-label" : ""}>Email ID</label>
+                        <label className={errors.email ? "error-label" : ""}>Email ID</label>
                         <input
                             type="text"
                             name="email"
@@ -94,7 +94,7 @@ export const ProfilePage = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="dob" className={errors.dateOfBirth ? "error-label" : ""}>Date of Birth</label>
+                        <label className={errors.dateOfBirth ? "error-label" : ""}>Date of Birth</label>
                         <input
                             type="date"
                             name="dateOfBirth"

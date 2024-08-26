@@ -87,7 +87,7 @@
     background-color: red;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 768px) {
     .navbar {
         height: 8vh;
         box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);

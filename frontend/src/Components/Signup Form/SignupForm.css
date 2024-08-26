@@ -95,7 +95,7 @@
     font-weight: bold;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 768px) {
     .signup-form {
         width: 90%;
     }
