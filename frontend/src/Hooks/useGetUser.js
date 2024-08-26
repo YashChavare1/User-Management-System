@@ -30,7 +30,6 @@ export const useGetUser = (getUser = false) => {
                 setLoading(false);
             }
             catch (error) {
-                console.error(error);
                 setLoading(false);
             }
         };
