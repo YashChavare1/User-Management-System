@@ -15,7 +15,7 @@ export const useUpdateUser = (url, data) => {
             return;
         }
 
-        axios.post(`${process.env.REACT_APP_BASE_URL}${url}`, data, {
+        axios.put(`${process.env.REACT_APP_BASE_URL}${url}`, data, {
             headers: {
                 Authorization: `Bearer ${userToken}`,
             },
