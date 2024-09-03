@@ -74,7 +74,6 @@ export const UserListNavbar = ({ userData, setDisplayUsers }) => {
                             </select>
                         </div>
 
-
                         <div className="sort-dob">
                             <h3>Date of Birth</h3>
                             <select name="sort" id="sort" onChange={handleSortDOB}>
